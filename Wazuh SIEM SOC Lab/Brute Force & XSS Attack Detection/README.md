@@ -7,8 +7,13 @@ This technical documentation explains the process of simulating a brute force at
 ![Diagram Architecture](Capture_image/Diagram_architecture.jpg)
 
 
-## 1. Fase Serangan (Offensive Execution)
-Serangan disimulasikan dari mesin **Kali Linux** menggunakan tools **Hydra** untuk melakukan serangan kamus (*dictionary attack*) terhadap akun target pada Ubuntu Server.
+## 1. Detect Brute Force Attacks
+Detected an attack attempt to force entry into the server via **ssh** and detected as **multiple failed login** and **Wazuh** detected it as **brute force attack**
+
+| Timestamp (22 Jun 2026) | Target Agent | Rule Description | Rule Level | Rule ID |
+| :--- | :--- | :--- | :---: | :---: |
+| 21:55:42.773 - 42.807 | Server01 | sshd: Attempt to login using a non-existent user | 5 | **5710** |
+| 21:55:42.807 | Server01 | PAM: Multiple failed logins in a small period of time | 10 | **5551** |
 
 *   **Target IP:** `192.168.56.20` (Ubuntu Server)
 *   **Attacker IP:** `192.168.56.10` (Kali Linux)

@@ -1,6 +1,10 @@
 # Technical Walkthrough: SSH Brute Force, XSS Detection & Response
 
-This technical documentation explains the process of simulating a brute force attack on Ubuntu Server's SSH service and how Wazuh SIEM performs detection and log analysis.
+This technical documentation explains the process of simulating a brute force attack, xss attack, and malware distribution on Ubuntu Server's SSH service and how Wazuh SIEM performs detection and log analysis.
+
+## 🗺️ Network Architecture & Simulation Workflow
+
+![Diagram Architecture](Capture_image/Diagram_architecture.jpg)
 
 
 ## 1. Fase Serangan (Offensive Execution)

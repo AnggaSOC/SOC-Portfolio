@@ -3,17 +3,34 @@
 This technical documentation explains the process of simulating a brute force attack, xss attack, and malware distribution on Ubuntu Server's SSH service and how Wazuh SIEM performs detection and log analysis.
 
 ## 🗺️ Network Architecture & Simulation Workflow
+```
+[ Kali Linux ] --(Network Scanning/Host)--> [ Linux Mint Server ]
+                                                     |
+                                        +------------+------------+
+                                        |                         |
+                                 [ Network Traffic ]       [ System Logs ]
+                                        |                         |
+                                 (Monitored by IDS)        (Monitored by FIM/OSSEC)
+                                        |                         |
+                                 [ /var/log/suricata/eve.json ]   |
+                                        |                         |
+                                        +------------+------------+
+                                                     |
+                                              [ Wazuh Agent ]
+                                                     |  (Send logs via Port 1514/TCP)
+                                                     v
+                                             [ Wazuh Server ]
 
-![Diagram Architecture](Capture_image/Diagram_architecture.jpg)
+```
+## 1. Alert From IDS (Suricata)
+An intrusion detection system (IDS) detects a spike in network activity and interprets it as a network scan. It sends an alert, but it's considered a **false positive** due to the high network traffic.
 
-
-## 1. Detect Brute Force Attacks
-Detected an attack attempt to force entry into the server via **ssh** and detected as **multiple failed login** and **Wazuh** detected it as **brute force attack**
-
-| Timestamp (22 Jun 2026) | Target Agent | Rule Description | Rule Level | Rule ID |
+| Timestamp (24 Jun 2026) | Target Agent | Rule Description | Rule Level | Rule ID |
 | :--- | :--- | :--- | :---: | :---: |
-| 21:55:42.773 - 42.807 | Server01 | sshd: Attempt to login using a non-existent user | 5 | **5710** |
-| 21:55:42.807 | Server01 | PAM: Multiple failed logins in a small period of time | 10 | **5551** |
+| 20:59:56.458 | Server02 | IDS event | 6 | **20101** |
+
+## 2. Brute Force Detection
+Wazuh detects repeated attempts to log into a server via SSH. This detection is strengthened by matching with MITRE ATT&CK.
 
 *   **Target IP:** `192.168.56.20` (Ubuntu Server)
 *   **Attacker IP:** `192.168.56.10` (Kali Linux)

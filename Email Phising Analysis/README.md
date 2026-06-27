@@ -9,22 +9,40 @@
 
 ---
 
-## 📖 Chronological Incident Scenario
+## Manual Analysis of The Header and Body 
 The SOC team received a report of a potentially malicious email. The email contained a link intended for employees
+
+
+**Case 1**
+![Ikon Email](Image/email.png)
+
 ```
-Dear Employee,
-
-Your corporate email account will be suspended within 24 hours due to unusual activity detected on your account.
-
-To prevent suspension, please verify your identity immediately by clicking the button below:
-
-Verify Account Now
-If you did not request this, please ignore this email. Your account will be suspended automatically.
-
-© 2025 IT Support Team - Linuxenic Corporation
-
-This is an automated message. Do not reply.
+From
+IT Support Team <support@linuxenic-corp.com>
+To
+employee@linuxenic-corp.com
+Date
+Mon, 27 Jan 2025 09:15:42 +0700
 ```
----
+Show original :
+```
+Return-Path: <bounce@suspicious-domain.xyz>
+```
+The Return-Path is different from the From field. The email actually came from **suspicious-domain.xyz**.
 
+```
+Received: from smtp-out.suspicious-domain.xyz
+```
+The original sending server is also not from linuxenic-corp.com
+
+```
+Received-SPF: fail
+dkim=fail
+dmarc=fail
+```
+```
+X-Mailer: PHPMailer 6.5.0
+X-PHP-Originating-Script: 0:send_phish.php
+```
+Sent using **PHPMailer** from the send_phish.php script. This indicates that this email was created using **phishing tools.**
 ## 🏗️ Metodologi & Alur Investigasi

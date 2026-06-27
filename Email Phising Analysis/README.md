@@ -5,7 +5,7 @@
 
 ## 📌 Project Context & Disclaimer
 > **⚠️ Educational Lab Scenario:** 
-> Investigasi ini dilakukan menggunakan artefak simulasi (file email `.eml`/`.msg`, *header logs*, dan *untrusted links/files*) yang disediakan oleh platform pembelajaran cybersecurity **Linuxenic**. Laporan ini digabungkan secara kronologis menjadi satu studi kasus komprehensif untuk mendemonstrasikan kapabilitas *Incident Response* seorang SOC Analyst dari hulu ke hilir.
+> This investigation was conducted using simulated artifacts (.eml/.msg email files, header logs, and untrusted links/files) provided by the Linuxenic Corp. cybersecurity training platform. This report has been compiled chronologically into a single comprehensive case study to demonstrate the incident response capabilities of a SOC analyst. 
 
 ---
 

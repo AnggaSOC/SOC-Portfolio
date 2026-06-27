@@ -1,9 +1,9 @@
 # SOC Lab: End-to-End Threat Detection & Incident Response with Wazuh SIEM and Suricata
 
-## 📌 Project Overview
+## Project Overview
 This project documents the development of a small-scale SOC (Security Operations Center) laboratory and the simulation of real-world attacks (Cyber Attack Lifecycle). The main focus of this project is to integrate **Suricata (NIDS)** and **Wazuh (SIEM/EDR)** to detect attacker tactics, ranging from the reconnaissance phase, access attempts (brute force), system intrusion (initial access), to post-compromise activities (unauthorized file modification).
 This project also documents the **Incident Response (IR)** actions taken by SOC analysts to tactically mitigate attacks and perform system hardening.
-## 🗺️ Network Architecture & Simulation Workflow
+## Network Architecture & Simulation Workflow
 ```
 [ Kali Linux ] --(Network Scanning/Host)--> [ Linux Mint Server ]
                                                      |
@@ -103,7 +103,7 @@ New sha1sum is : 'c42ade45806a8c4d46f16b2ce0c916ee43ccb27d'
 Old sha256sum was: '99bbf7c32d534bb2e3141260b32c1443b0831b1be4e373954b4b6ca9680aa218'
 New sha256sum is : '68704ae924b1d7237d34acb2e439d09f904f2931f5048049e2b61d3f92b72efb'
 ```
-## 🎯 Incident Response & System Hardening (SOC Playbook)
+## Incident Response & System Hardening (SOC Playbook)
 
 **1. Implementation of the Account Lockout Policy**
 * To prevent future brute-force attacks, the SOC configured the Pluggable Authentication Modules (PAM) architecture using `pam_faillock` on Linux Server.
@@ -114,3 +114,18 @@ auth [default=die] pam_faillock.so authfail audit deny=3 unlock_time=600
 ```
 
 **Security Impact:** If there are three consecutive failed login attempts, the target account will be **automatically locked** for 10 minutes, thwarting automated brute-force attacks.
+
+**2. Network Containment**
+* Tactical isolation (containment) of the attacker's IP address (192.168.1.12) to terminate all active connections and prevent lateral movement.
+
+```
+sudo iptables -A INPUT -s 192.168.1.12 -j DROP
+```
+
+**3. Remediation**
+* A local forensic analysis of the suspicious files. The contents of the **config_backup.txt** and **update.php** files were examined, their cryptographic hash values were compared, and after they were confirmed to be malicious code, the files were isolated and removed from the web server.
+
+## Key Takeaways
+* **1. Defense-in-Depth:** The combination of network monitoring (Suricata) and host monitoring (Wazuh FIM/Log Analysis) provides 360-degree visibility into unknown activity.
+
+* **2. Log Correlation Is Key:** Early detection was successful because the analyst was able to correlate scanning activity, followed by a series of SSH failures, and finally a successful login from the same IP address—an indicator of compromise (IoC).

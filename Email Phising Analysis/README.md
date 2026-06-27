@@ -10,10 +10,21 @@
 ---
 
 ## 📖 Chronological Incident Scenario
-SOC menerima laporan/eskalasi tiket dari seorang karyawan mengenai adanya email mencurigakan yang mengatasnamakan manajemen atau platform **Linuxenic** (*Brand Impersonation*). Email tersebut menggunakan taktik urgensi psikologis untuk memancing korban memberikan kredensial atau membuka berkas di dalamnya. 
+The SOC team received a report of a potentially malicious email. The email contained a link intended for employees
+```
+Dear Employee,
 
-Sebagai SOC Analyst, saya melakukan triase (*triage*) dan investigasi forensik digital terhadap artefak email tersebut melalui 3 fase analisis teknis yang terstruktur.
+Your corporate email account will be suspended within 24 hours due to unusual activity detected on your account.
 
+To prevent suspension, please verify your identity immediately by clicking the button below:
+
+Verify Account Now
+If you did not request this, please ignore this email. Your account will be suspended automatically.
+
+© 2025 IT Support Team - Linuxenic Corporation
+
+This is an automated message. Do not reply.
+```
 ---
 
 ## 🏗️ Metodologi & Alur Investigasi

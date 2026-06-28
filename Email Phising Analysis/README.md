@@ -169,4 +169,8 @@ SHA256: 6d55f25222831cce73fd9a64a8e5a63b002522dc2637bd2704f77168c7c02d88
 Classification: Emotet Dropper (Epoch 5)
 Source: MalwareBazaar / abuse.ch
 ```
-Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis
+Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis like **Virustotal**.
+
+![Ikon Email](Image/email5.png)
+
+This file has been detected as malware. You can view a lot of information here, such as the malware family name, the original file name, etc.

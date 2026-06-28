@@ -122,3 +122,51 @@ Once the malware has been successfully downloaded from the attacker’s server, 
 Using tools to analyze malicious emails greatly helps make the analysis process much faster and more efficient.
 
 **Case 3**
+
+![Ikon Email](Image/email4.png)
+
+```
+From
+m.anderson@linuxenic-corp.com
+To
+employee@linuxenic-corp.com
+Reply-To
+m.anderson.ceo@protonmail.com
+Date
+Tue, 28 Jan 2025 09:14:22 +0000
+```
+
+Protonmail.com is not a corporate email service, such emails should be treated with suspicion as potentially dangerous.
+
+```
+Delivered-To: employee@linuxenic-corp.com
+Return-Path: <ceo-urgent@offshore-bizfin.xyz>
+Received: from mail-out.offshore-bizfin.xyz 
+```
+The return path also doesn't match the “From” field. This indicates that the email is malicious. Any attachments sent via this email are also certainly malicious. Analyzing the contents of a malicious email attachment directly can be dangerous. Specialized tools for analyzing phishing emails are the most effective way to handle this.
+
+```
+INVOICE: GlobalTech Solutions Ltd.
+Invoice No: GT-INV-2025-4847
+Date: January 28, 2025
+Due: January 28, 2025 (SAME DAY)
+========================================
+Service: Q4 IT Infrastructure Consulting
+Amount: USD 47,250.00
+========================================
+Wire Transfer Details:
+Bank: First Caribbean International Bank
+Account Name: GlobalTech Solutions Ltd.
+Account No: 8837-2941-0055-7721
+SWIFT/BIC: FCIBJMKN
+Reference: GT-Q4-LINUXENIC-2025
+========================================
+/URI (http://wire-payment.globaltech-invoice.xyz/pay?inv=GT-29481)
+/URI (http://globaltech-portal.offshore-bizfin.xyz/confirm?ref=GT-Q4)
+========================================
+IoC Reference (Threat Intel):
+SHA256: 6d55f25222831cce73fd9a64a8e5a63b002522dc2637bd2704f77168c7c02d88
+Classification: Emotet Dropper (Epoch 5)
+Source: MalwareBazaar / abuse.ch
+```
+Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis

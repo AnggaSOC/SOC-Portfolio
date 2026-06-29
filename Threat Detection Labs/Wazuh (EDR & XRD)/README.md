@@ -1,4 +1,5 @@
 # SOC Lab: End-to-End Threat Detection & Incident Response with Wazuh SIEM and Suricata
+![wazuh](images.png)
 
 ## Project Overview
 This project documents the development of a small-scale SOC (Security Operations Center) laboratory and the simulation of real-world attacks (Cyber Attack Lifecycle). The main focus of this project is to integrate **Suricata (NIDS)** and **Wazuh (SIEM/EDR)** to detect attacker tactics, ranging from the reconnaissance phase, access attempts (brute force), system intrusion (initial access), to post-compromise activities (unauthorized file modification).

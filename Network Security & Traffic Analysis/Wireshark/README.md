@@ -14,12 +14,9 @@ The SOC team reports that an employee’s workstation has been compromised. The 
 
 ## Investigation
 * **Identify the IP addresses of employee workstations**
-  
+  ![pcap1](Images/ws1.png)
 
-Sebagai analis, saya melakukan investigasi forensik jaringan untuk membuktikan hipotesis serangan berikut:
-1. **Initial Access:** Bagaimana malware pertama kali masuk ke jaringan internal?
-2. **Command & Control (C2):** Ke mana perangkat korban menghubungi server luar untuk menerima instruksi?
-3. **Data Exfiltration / Payload Delivery:** Apakah ada aktivitas pengunduhan file berbahaya atau pencurian data sensitif?
+  From the list of IP addresses, it appears that `10.10.10.55` generated the most traffic. That IP address belongs to the workstation of an employee whose system was compromised.
 
 ---
 

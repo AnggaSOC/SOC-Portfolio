@@ -54,7 +54,16 @@ Within a short period of time, there was a potential network scanning incident f
 | 10:52:09.098 | Server02 | sshd: brute force trying to get access to the system. Non existent user. | 10 | **5712** |
 | 10:52:09.171 | Server02 | PAM: Multiple failed logins in a small period of time. | 10 | **5551** |
   
+## 2.1 Alert Verification & Incident Triage (Critical Analysis Phase)
+When the multiple failed login alerts (Rule ID: 5712 & 5551) triggered simultaneously, a professional SOC analyst does not immediately jump to conclusions or initiate drastic network isolation. Two initial hypotheses must be verified to eliminate false alarms:
 
+ * **False Positive Check:** Could this alert be caused by a misconfigured internal script, system application, or an automated monitoring tool trying to authenticate?
+ * **Authorized Activity Check:** Could this be an authorized system administrator attempting to remote via SSH, perhaps having forgotten their password or using an outdated credential manager?
+
+####  Triage and Verification Process:
+* **Change Management Review:** The analyst cross-checked the internal IT maintenance logs and active tickets. There was no scheduled maintenance window or authorized remote task assigned for the Linux Mint Server during this period.
+* **Log Pattern & Behavior Analysis:** The analyst scrutinized the volume and velocity of the failed attempts. If an authorized human administrator forgot a password, the logs would typically show 3 to 5 failed attempts within a reasonable human typing interval, followed by a pause. 
+* **Conclusion:** In this case, the SIEM captured **hundreds of authentication failures within seconds** targeting generic and non-existent usernames (e.g., `root`, `admin`). This pattern confirms the use of an automated brute-force tool (e.g., Hydra). Therefore, the authorized activity hypothesis was discarded, and the incident status was elevated to a verified **True Positive**.
 
 ## 3. Initial Access (Successful Compromise)
 An anomaly was detected because a successful login occurred immediately after hundreds of failure alerts from the same attacker's IP address (192.168.1.12).
@@ -124,6 +133,29 @@ sudo iptables -A INPUT -s 192.168.1.12 -j DROP
 
 **3. Remediation**
 * A local forensic analysis of the suspicious files. The contents of the **config_backup.txt** and **update.php** files were examined, their cryptographic hash values were compared, and after they were confirmed to be malicious code, the files were isolated and removed from the web server.
+
+**4. Long-Term System Hardening (Post-Incident Preventive Actions)**
+To ensure the infrastructure is resilient against similar credential access attacks in the future, the following strategic hardening steps were implemented on the Linux Mint Server:
+
+* **Disabling Password Authentication in Favor of SSH Keys:**
+  The server configuration in `/etc/ssh/sshd_config` was updated to disallow password-based logins entirely, forcing the use of secure cryptographic SSH key pairs.
+  ```text
+  PasswordAuthentication no
+  PubkeyAuthentication yes
+
+Security Impact: This completely neutralizes automated brute-force tools (like Hydra) because there are no text passwords to guess.
+
+* **Implementing IP Whitelisting (TCP Wrappers / Firewall Rules):**
+SSH access was restricted only to authorized management IP addresses (e.g., the SOC Analyst workstation or Jump Box network). All other IP addresses attempting to access Port 22 are dropped by default.
+```
+Example
+# Configuration in /etc/hosts.allow
+sshd : 192.168.1.50 : ALLOW
+
+# Configuration in /etc/hosts.deny
+sshd : ALL : DENY
+
+```
 
 ## Key Takeaways
 * **1. Defense-in-Depth:** The combination of network monitoring (Suricata) and host monitoring (Wazuh FIM/Log Analysis) provides 360-degree visibility into unknown activity.

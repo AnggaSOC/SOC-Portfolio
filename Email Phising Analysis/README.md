@@ -1,4 +1,6 @@
 # Email Security Triage & Forensics: End-to-End Phishing Investigation Report
+
+![phising](Image/phising.jpg)
 ### 🔬 Case Study: Linuxenic Security Simulation Lab
 
 ---

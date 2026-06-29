@@ -148,7 +148,7 @@ Delivered-To: employee@linuxenic-corp.com
 Return-Path: <ceo-urgent@offshore-bizfin.xyz>
 Received: from mail-out.offshore-bizfin.xyz 
 ```
-**What:** A targeted CEO Fraud/Spear-Phishing email impersonating the executive office (m.anderson@linuxenic-corp.com) was investigated. *Protonmail.com* is not a corporate email service, such emails should be treated with suspicion as potentially dangerous.The return path also doesn't match the “From” field. This indicates that the email is malicious. Any attachments sent via this email are also certainly malicious. Analyzing the contents of a malicious email attachment directly can be dangerous. Specialized tools for analyzing phishing emails are the most effective way to handle this.
+**What:** A targeted CEO Fraud/Spear-Phishing email impersonating the executive office `(m.anderson@linuxenic-corp.com)` was investigated. *Protonmail.com* is not a corporate email service, such emails should be treated with suspicion as potentially dangerous.The return path also doesn't match the “From” field. This indicates that the email is malicious. Any attachments sent via this email are also certainly malicious. Analyzing the contents of a malicious email attachment directly can be dangerous. Specialized tools for analyzing phishing emails are the most effective way to handle this.
 
 ```
 INVOICE: GlobalTech Solutions Ltd.
@@ -177,8 +177,8 @@ Source: MalwareBazaar / abuse.ch
 **How:** Advanced triage tools were utilized to automatically parse the email components, extract indicators of compromise (IoCs), and correlate the file hashes with global security intelligence databases like VirusTotal.
 Analyze the file contents to extract information and the SHA256 hash for comparison using specialized tools for phishing email analysis (**Virustotal**).
 
-**Why & Findings:** Initial triage caught an external Reply-To mismatch pointing to a free public domain (m.anderson.ceo@protonmail.com) and a fraudulent transfer request of USD 47,250.00.
- * Malicious URIs: http://wire-payment.globaltech-invoice.xyz
+**Why & Findings:** Initial triage caught an external Reply-To mismatch pointing to a free public domain `(m.anderson.ceo@protonmail.com)` and a fraudulent transfer request of USD 47,250.00.
+ * Malicious URIs: `http://wire-payment.globaltech-invoice.xyz`
  * SHA256 Hash: 6d55f25222831cce73fd9a64a8e5a63b002522dc2637bd2704f77168c7c02d88
 
 The automated extraction pulled out malicious URIs and a file attachment hash:

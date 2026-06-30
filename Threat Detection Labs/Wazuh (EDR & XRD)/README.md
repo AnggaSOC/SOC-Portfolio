@@ -113,6 +113,8 @@ New sha1sum is : 'c42ade45806a8c4d46f16b2ce0c916ee43ccb27d'
 Old sha256sum was: '99bbf7c32d534bb2e3141260b32c1443b0831b1be4e373954b4b6ca9680aa218'
 New sha256sum is : '68704ae924b1d7237d34acb2e439d09f904f2931f5048049e2b61d3f92b72efb'
 ```
+## Incident Response Guidelines
+* **
 ## Incident Response & System Hardening (SOC Playbook)
 
 **1. Implementation of the Account Lockout Policy**

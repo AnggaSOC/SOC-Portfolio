@@ -14,7 +14,7 @@ This portfolio documents the *hands-on labs* and cybersecurity projects I have w
 | Skill | Description | Link / Kode |
 | :--- | :--- | :---: |
 | **SIEM & Log Analysis** | Setting up a SIEM lab (Wazuh & Suricata) for endpoint and network monitoring | [📂 Lihat Proyek](https://github.com/username/project-link) |
-| **Network Security** | Malware traffic analysis (PCAP analysis) using Wireshark to identify C2 beaconing.| [📂 Lihat Proyek](https://github.com/username/project-link) |
+| **Network Security** | Malware traffic analysis (PCAP analysis) using Wireshark to identify C2 beaconing.| [📂 Lihat Proyek](https://github.com/AnggaSOC/SOC-Portfolio/tree/d74a12b23ecde86e2615ed10e56ee470d50e298d/Network%20Security%20%26%20Traffic%20Analysis/Wireshark) |
 | **Vulnerability Assessment** | Pentesting dan pemindaian kerentanan pada web server menggunakan Nmap & Burp Suite. | [📂 Lihat Proyek](https://github.com/username/project-link) |
 | **Incident Response** | Membuat playbook penanganan insiden dan otomatisasi isolasi *host* yang terinfeksi. | [📂 Lihat Proyek](https://github.com/username/project-link) |
 | **Malware Analysis** | Analisis statis dan dinamis terhadap sampel *ransomware* di lingkungan *sandbox*. | [📂 Lihat Proyek](https://github.com/username/project-link) |

@@ -33,17 +33,16 @@ This portfolio documents the *hands-on labs* and cybersecurity projects I have w
 ## 🏆 Sertifikasi & Pelatihan
 Berikut adalah sertifikasi profesional dan pelatihan intensif yang telah saya selesaikan untuk memvalidasi keahlian saya:
 
-| Nama Sertifikasi / Pelatihan | Penerbit / Institusi | Status / ID |
+| Sertification/ Course | Publisher/Institution| Status / ID |
 | :--- | :--- | :---: |
-| **CompTIA Security+** | CompTIA | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
-| **Certified Ethical Hacker (CEH)** | EC-Council | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
-| **Google Cybersecurity Professional Certificate** | Coursera / Google | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
-| **Junior Penetration Tester (eJPT)** | INE / eLearnSecurity | <kbd>IN PROGRESS</kbd> |
+| **Cybersecurity 101** | Linuxenic Corporation | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
+| **IT Support** | Linuxenic Corporation | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
+| **Junior Penterster** | Linuxenic Corporation | [🏅 Verifikasi](https://link-ke-sertifikat.com) |
+| **Security Engineer** | Linuxenic Corporation | <kbd>IN PROGRESS</kbd> |
 
 ---
 
-## 📬 Hubungi Saya
-Jika Anda tertarik untuk berkolaborasi atau mendiskusikan peluang kerja, silakan hubungi saya melalui:
+## 📬 Contact Me
 
 *   **LinkedIn:** [linkedin.com/in/username](https://linkedin.com)
-*   **Email:** email.anda@domain.com
+*   **Email:** anggabayu.satriawan@gmail.com

@@ -49,7 +49,13 @@ This project also documents the **Incident Response (IR)** actions taken by SOC 
 **The Golden Rule Before Taking Action:**
 Always answer these 4 questions first: Who (Who is the perpetrator?), What (What are they doing?), Where (What is the target?), and When (When did it happen, and was it outside of business hours?). Do not block the activity until you have confirmed that it is a false positive.
 
-In this case, the alert indicates a true positive: an attacker is attempting to take over the server and add malicious files.
+---
+
+## 📌 Scenario
+> In this case, the alert indicates a true positive: an attacker is attempting to take over the server and add malicious files
+---
+
+
 ## 1. SOC Detection:
 IDS detected a potential network scan conducted by an IP address outside the network. 
 

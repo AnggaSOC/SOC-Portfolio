@@ -30,6 +30,26 @@ This project also documents the **Incident Response (IR)** actions taken by SOC 
 | **Mint-Client** | Linux Mint |  Web Server | `192.168.1.11` | Wazuh Agent, Suricata NIDS, Nginx |
 | **Kali-Attacker**| Kali Linux | Threat Actor / Attacker | `192.168.1.12` | Nmap, Hydra, SSH Client | 
 
+
+## Incident Response Guidelines
+* **Potential Network Scanning**
+  * Source check : internal IP adress or external IP address?
+  * Validation : if internal check vulnerability scanning schedule with IT team
+  * Reputation : if external, check IP address reputation in Threat Intelligence (Virustotal/AbuseIPDB)
+* **Failed Login / Brute Force**
+  * Pattern check : Is the account being targeted continuously, or are multiple accounts being targeted (password spraying)?
+  * Contextual Check: If the issue is internal, make sure it’s not because a new user changed their password, but rather because an old app is stuck trying to log in automatically.
+* **Unknown Account Successfully Logged In**
+  * Account Status: Check with the HR/Admin team to see if this is a new employee, a vendor account, or a trial account.
+  * Access Anomaly: Check the login location (e.g., VPN from abroad) and the access rights associated with that account.
+* **Modifikasi/Penambahan File di Server**
+  * Check for Ticket Changes: Align with the Change Management schedule or the Developer/SysAdmin team’s deployment documentation.
+  * Location & Reputation: Check whether the file is located in a sensitive directory (e.g., the web root folder) and verify the file's hash on VirusTotal.
+
+**The Golden Rule Before Taking Action:**
+Always answer these 4 questions first: Who (Who is the perpetrator?), What (What are they doing?), Where (What is the target?), and When (When did it happen, and was it outside of business hours?). Do not block the activity until you have confirmed that it is a false positive.
+
+In this case, the alert indicates a true positive: an attacker is attempting to take over the server and add malicious files.
 ## 1. SOC Detection:
 IDS detected a potential network scan conducted by an IP address outside the network. 
 
@@ -113,8 +133,7 @@ New sha1sum is : 'c42ade45806a8c4d46f16b2ce0c916ee43ccb27d'
 Old sha256sum was: '99bbf7c32d534bb2e3141260b32c1443b0831b1be4e373954b4b6ca9680aa218'
 New sha256sum is : '68704ae924b1d7237d34acb2e439d09f904f2931f5048049e2b61d3f92b72efb'
 ```
-## Incident Response Guidelines
-* **
+
 ## Incident Response & System Hardening (SOC Playbook)
 
 **1. Implementation of the Account Lockout Policy**

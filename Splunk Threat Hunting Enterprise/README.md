@@ -14,6 +14,7 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
 **Reconnaissance phase**
  * **Investigation**
    Identificate IP address from http trafic
+   ![splunk](Images/sp1.png)
    
    
 

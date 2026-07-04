@@ -37,6 +37,11 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
    * Attacker use acunetic web scanning
    ```
    
-   
-   
+   ## Investigate Exploitation ##
 
+   **Find IP server (destination)**
+   ![splunk](Images/sp4.png)
+   ```
+   IP server : 192.168.250.70
+   ```
+   `192.168.250.70` 

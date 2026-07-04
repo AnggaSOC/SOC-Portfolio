@@ -60,4 +60,9 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
    * `/joomla/index.php/`
    * `/joomla/administrator/index.php`
 
+   `/joomla/administrator/index.php` is the URL most likely to be attacked because it leads directly to the administrator
+
+   **Identify the IP address that posted to the URI**
+   ![splunk](Images/sp7.png)
+
    

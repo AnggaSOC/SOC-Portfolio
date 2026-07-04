@@ -45,3 +45,11 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
    IP server : 192.168.250.70
    ```
    `192.168.250.70` 
+
+   **Check HTTP Request to Web Server**
+   ![splunk](Images/sp5.png)
+
+   POST is the most common request, it could be due to login attempts or form submissions.
+
+   **URI That Are frequently POST**
+   

@@ -83,12 +83,12 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
 ## Investigate Installation Phase ##
 
 **Find Uploaded Files (executable file)**
-![splunk](Images/sp8.png)
+![splunk](Images/sp10.png)
 
 File found : 3791.exe
 
 **Find IP Address That Uploaded The File**
-![splunk](Images/sp9.png)
+![splunk](Images/sp11.png)
 
 **Information Obtained:**
 * Uploaded file : 3791.exe
@@ -97,18 +97,30 @@ File found : 3791.exe
 ## Investigate Defacement
 
 **Check Outbond Traffic From Web Server**
-![splunk](Images/sp10.png)
+![splunk](Images/sp13.png)
 
 **Check the URL accessed by the attacker's IP address**
-![splunk](Images/sp11.png)
+![splunk](Images/sp14.png)
 
 **Get Detailed Defacement File**
-![splunk](Images/sp12.png)
+![splunk](Images/sp15.png)
 
 **Information Obtained:**
 * The destination IP address accessed by the web server (C2) : `23.22.63.114`
 * Downloaded file (file defacement): `/poisonivy-is-coming-for-you-batman.jpeg`
 * Hostname of the downloaded file : `prankglassinebracket.jumpingcrab.com`
+
+## Cyber Chain Mapping
+
+| Phase | Finding | 
+| -------- | -------- | 
+| Reconnaissance   | IP 40.80.148.42 scanning with Acunetix   | 
+| Exploitation   | Brute force dari 23.22.63.114   |
+| Installation   | File 3791.exe uploaded and executed    | 
+| C2   | Domain prankglassinebracket.jumpingcrab.com	   |
+| Action on Objectives   | Website defaced dengan poisonivy JPEG   | 
+
+
 
 
 

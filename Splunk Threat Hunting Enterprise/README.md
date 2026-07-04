@@ -52,4 +52,12 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
    POST is the most common request, it could be due to login attempts or form submissions.
 
    **URI That Are frequently POST**
+   ![splunk](Images/sp6.png)
+
+   
+   Top 3 URI
+   * `/joomla/index.php/component/search/`
+   * `/joomla/index.php/`
+   * `/joomla/administrator/index.php`
+
    

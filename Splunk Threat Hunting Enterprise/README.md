@@ -31,8 +31,10 @@ Use a cyber kill chain model to map out the stages an attacker goes through.
    **Acunetic web scanner** keeps appearing, this indicates that an attacker is using this tool for reconnaissance
 
    ```
-   Information
-   * Uopso
+   Information Obtained
+   * `40.80.148.42`, `23.22.63.114` send requests to server
+   * `40.80.148.42` is scanning `192.168.250.70
+   * Attacker use acunetic web scanning
    ```
    
    

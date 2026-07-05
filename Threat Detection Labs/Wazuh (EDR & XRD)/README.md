@@ -185,6 +185,11 @@ sshd : ALL : DENY
 
 ```
 
+## Investigation Report 
+1. Incident Summary
+   * Incident ID : INC-001
+   * Affected Assets : Server02-Linux Mint (Web Server) `192.168.1.11`
+   * Description : The SIEM detected network scanning activity targeting the server and repeated login attempts within a very short period of time by an external IP address, followed by a successful SSH login. The user attempted to escalate privileges but was unsuccessful; however, the user did manage to upload an unknown file to the web server, which is suspected to be malicious and potentially a backdoor file.
 ## Key Takeaways
 * **1. Defense-in-Depth:** The combination of network monitoring (Suricata) and host monitoring (Wazuh FIM/Log Analysis) provides 360-degree visibility into unknown activity.
 

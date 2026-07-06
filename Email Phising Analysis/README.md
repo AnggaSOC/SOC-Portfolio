@@ -54,6 +54,24 @@ X-PHP-Originating-Script: 0:send_phish.php
 ```
 Sent using **PHPMailer** from the send_phish.php script. This indicates that this email was created using **phishing tools.**
 
+**Investigation Report**
+**1. Incident Summary**
+  * Incident ID : INC-2006-002 | High (Potential Credential Harvesting / Malware Delivery)
+  * Affected Assets : Employee email inbox
+  * Description : The SOC team analyzed a suspicious email reported by an employee. The analysis revealed that the email was a phishing attempt that used sender name spoofing and urgency tactics to trick the victim into clicking on a malicious link (credential harvesting).
+
+**2. Cyber Kill Chain Mapping**
+  * Reconnaissance : The attacker compiles a list of the company's target email addresses (employees).
+  * Weaponization : The attacker created a fake email from HR and sent it to employees
+  * Delivery : The phishing email successfully bypassed the Spam Gateway filter and landed in the victim's inbox. 
+
+**3. Forensic Evidence & Analysis**
+Email Header Analysis
+  * Displayed from : IT Support Team `<support@linuxenic-corp.com>`
+  * Return-Path: `<bounce@suspicious-domain.xyz>`
+  * Received-SPF: fail
+  * dkim=fail
+  * dmarc=fail
 
 **Case 2**
 

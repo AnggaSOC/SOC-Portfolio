@@ -190,14 +190,22 @@ sshd : ALL : DENY
    * Incident ID : INC-001
    * Affected Assets : Server02-Linux Mint (Web Server) `192.168.1.11`
    * Description : The SIEM detected network scanning activity targeting the server and repeated login attempts within a very short period of time by an external IP address, followed by a successful SSH login. The user attempted to escalate privileges but was unsuccessful; however, the user did manage to upload an unknown file to the web server, which is suspected to be malicious and potentially a backdoor file.
-**2. Cyber Chain Mapping**
+     
+**2. Attack Mapping**
+
+
+| Phase | Threat Activity | Time | Evidence |
+| :--- | :--- | :---: | :--- |
+| Reconnaissance | Network scanning | 10:45:08.657 | IDS event with Rule ID 20101 |
+| Exploitation 1 | Brute force attack | 10:52:09.098 | sshd: brute force trying to get access to the system. Non existent user |
+| Exploitation 2 | Brute force attack | 10:52:09.171 | PAM: Multiple failed logins in a small period of time. |
+| Exploitation 3 | Brute force attack | 10:53:57.262 | Multiple authentication failures followed by a success |
+| Exploitation 3 | Previlege escalation (not success) | 10:55:53.316 | Command not allowed |
+| Installation | Create new file in web server | 10:59:43.808 | File '/var/www/html/uploads/update.php' added |
+| Installation 2 | Modify file in web server | 11:01:32.310 | File '/var/www/html/uploads/update.php' modified |
+
 
      
-     | Phase | Threat Activity | Time | Evidence | 
-| :--- | :--- | :--- | :--- | 
-| Reconnaissance | Network scanning activity | 10:45:08.657 | IDS event with Rule ID 20101| 
-| 10:58:21.786| Server02 | |File added to the system. | 
-| 11:01:32.310| Server02 | |Integrity checksum changed. |
 ## Key Takeaways
 * **1. Defense-in-Depth:** The combination of network monitoring (Suricata) and host monitoring (Wazuh FIM/Log Analysis) provides 360-degree visibility into unknown activity.
 

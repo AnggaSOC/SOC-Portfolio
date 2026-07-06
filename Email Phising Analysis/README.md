@@ -94,6 +94,22 @@ Email Header Analysis
 
 * **Why & Findings :** A hidden link manipulation technique (hidden redirection) has been discovered. Attackers disguise links to make them appear safe in the body of an email, but the HTML code redirects users to the attacker’s server.
 
+**Investigation Report**
+  * Incident Summary : INC-2026-003 | Medium-High
+  * Affected Assets : Employee email inbox
+  * Description : The SOC team received a report about an incoming email offering benefits to employees in 2025. At first glance, the email appeared normal because there were no suspicious signs. The team was asked to analyze this email more thoroughly
+  * Result : Hidden 1x1 image pixel to track if the link clicked by victim
+    
+```
+<img src="http://tracking.benefits-linuxenic.com/open.gif?id=emp001&amp;campaign=benefits2025" width="1" height="1" alt="" style="display:none;">
+```
+Actual link (dangerous link)
+
+```
+<a href="http://linuxenic-corp.benefits-portal.suspicious-domain.xyz/enroll?ref=email"
+   style="color:#1e3a5f;">https://benefits.linuxenic-corp.com/enroll</a>
+```
+
 **Case 3**
 
 ![Ikon Email](Image/email3.png)

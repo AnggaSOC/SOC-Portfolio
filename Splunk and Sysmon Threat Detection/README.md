@@ -21,4 +21,20 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   - Source : Google Drive
   - File extraction : Finance_Report2026.pdf
   - Original file extension : Finance_Report2926.pdf.exe (hidden double extension)
-  b
+
+
+## Incident Report
+
+  Confidentialy : Internal Only
+  Incident ID : INC-20260711-005
+  Severity Level : Critical
+  Detection Time :
+
+  **1. Incident Summary**
+  | Parameter | Data |
+  | -- | -- |
+  | Incident Status | Closed (mitigated) |
+  | Attack Category | Phising/Unauthorized access/Data theft |
+  | Affected Assets | Hostname : `Desktop01 - Windows 10` |
+  | Threat Actor IP | Kali linux : `192.168.1.11`
+  

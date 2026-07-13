@@ -59,4 +59,20 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   - 24:08:28 | Action On Objective (Data Exfiltration)
     Process : Detected a spike in file reading activity and sending large volumes of encrypted data from victim hosts to the attacker's IP.
     Evidence log : Sysmon ID 3
-    (add here)  
+    (add here)
+
+**3. Indicator Of Compromise (IOC)**
+  * File-based IOC
+    - File name : Finance_Report2026.pdf.exe
+    - Path : C:\Users\Desktop01\Downloads\Finance_Report2026.pdf.exe
+    - 256SHA Hash: add here
+
+  * Network-based IOC
+    - IP Attacker : 192.168.1.11
+    - Port : 4444
+    - Source domain : `drive.google.com`
+
+**4. Remediation**
+    * Host Isolation: Disconnects the network connection of VM WIN-VICTIM-01 to prevent lateral movement.
+    * C2 Session Termination: Blocks all incoming and outgoing traffic to and from IP `192.168.1.11` on the firewall perimeter.
+    * Artifact Cleanup: Force-kills the Finance_Report2026.pdf.exe process and deletes the associated binary files from the victim's storage directory. 

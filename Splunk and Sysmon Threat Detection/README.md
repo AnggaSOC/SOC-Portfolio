@@ -42,5 +42,21 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   **2. Chronological Logs**
   - 21:11:11 | Delivery
     Process : msedge.exe write file `Finance_Report2026.zip` to directory : `C:\Users\Desktop01\Downloads\`
-  - 
-  
+    Evidence log : Sysmon Event ID 15
+    (add here)
+  - 21:22:56 | Exploitation & Execution
+    Process : The user extracts the .zip archive and finds the Finance Report 2026.pdf file (the original file is hidden with a double extension .pdf.exe) and opens it. The process of giving birth to a child is a command line terminal process.
+    Evidence log : Sysmon Event ID 1
+    (add here)
+  - 22:22:34 | Installation (Reverse shell)
+    Process : Finance_Report.pdf.exe opened an outbound connection to an uncommon port.
+    Evidence log : Sysmon Event ID 3
+    (add here)
+  - 23:34:34 | Command & Control
+    Process : The threat actor executed local reconnaissance commands via a shell interface.
+    Evidence log : Sysmon Event ID 1
+    (add here)
+  - 24:08:28 | Action On Objective (Data Exfiltration)
+    Process : Detected a spike in file reading activity and sending large volumes of encrypted data from victim hosts to the attacker's IP.
+    Evidence log : Sysmon ID 3
+    (add here)  

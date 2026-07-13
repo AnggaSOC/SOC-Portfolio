@@ -36,5 +36,11 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   | Incident Status | Closed (mitigated) |
   | Attack Category | Phising/Unauthorized access/Data theft |
   | Affected Assets | Hostname : `Desktop01 - Windows 10` |
-  | Threat Actor IP | Kali linux : `192.168.1.11`
+  | Threat Actor IP | Kali linux : `192.168.1.11` |
+  | Entry Point | Phising attachment with download via Google Drive |
+
+  **2. Chronological Logs**
+  - 21:11:11 | Delivery
+    Process : msedge.exe write file `Finance_Report2026.zip` to directory : `C:\Users\Desktop01\Downloads\`
+  - 
   

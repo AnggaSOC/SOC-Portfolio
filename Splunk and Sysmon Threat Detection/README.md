@@ -73,6 +73,7 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
     - Source domain : `drive.google.com`
 
 **4. Remediation**
-    * Host Isolation: Disconnects the network connection of VM WIN-VICTIM-01 to prevent lateral movement.
-    * C2 Session Termination: Blocks all incoming and outgoing traffic to and from IP `192.168.1.11` on the firewall perimeter.
-    * Artifact Cleanup: Force-kills the Finance_Report2026.pdf.exe process and deletes the associated binary files from the victim's storage directory. 
+
+* Host Isolation: Disconnects the network connection of VM WIN-VICTIM-01 to prevent lateral movement.
+* C2 Session Termination: Blocks all incoming and outgoing traffic to and from IP `192.168.1.11` on the firewall perimeter.
+* Artifact Cleanup: Force-kills the Finance_Report2026.pdf.exe process and deletes the associated binary files from the victim's storage directory. 

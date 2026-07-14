@@ -22,6 +22,43 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   - File extraction : Finance_Report2026.pdf
   - Original file extension : Finance_Report2926.pdf.exe (hidden double extension)
 
+* **Exploitation**
+
+  The employee extracted the Finance_Report2026.zip file and opened it
+
+* **Instalation (Reverse Shell)**
+
+  The file Finance_Report2026.exe calls and runs a PowerShell program in the background. Powershell.exe is executed and opens a connection to port 4444
+
+* **Command & Control**
+
+  The attacker gained access via PowerShell and conducted reconnaissance on the victim’s computer to identify important company files.
+
+* **Action On Objective**
+
+  The attacker successfully extracted important data from the victim's computer and sent it via a pre-established connection on port 4444
+
+## Splunk Dashboard 
+
+(add dashboard photo here)
+
+## Threat Detection Evidence
+
+* **Malicious Application Alert**
+  - The “malicious applications” panel indicates that a file with a dual extension is currently running with .pdf.exe
+    (add photo here)
+  - Investigation Evidence
+    Sysmon recorded Event ID 1, which involved the execution of the `.pdf.exe` file with ParentImage: `powershell.exe`
+
+* **File Download Origrin**
+  - The file “Finance_Report2026.zip” was detected as having been downloaded using the Microsoft Edge browser via Google Drive
+  - Invetigation Evidence
+    Sysmon logged Event ID 3: the msedge.exe browser connected to `drive.google.com` and downloaded `Finance_Report2026.zip`
+
+* **Outbound Connection With Uncommon Port**
+  - Detected by Sysmon with Event ID 3: an outbound connection to port 4444 to a foreign IP address
+  - There are indications of data exfiltration to the attacker's IP address via port 4444, which is stealing important files from the victim's computer
+    (add photo here)
 
 ## Incident Report
 

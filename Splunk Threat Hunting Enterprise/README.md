@@ -115,7 +115,7 @@ File found : 3791.exe
 | Phase | Finding | 
 | -------- | -------- | 
 | Reconnaissance   | IP 40.80.148.42 scanning with Acunetix   | 
-| Exploitation   | Brute force dari 23.22.63.114   |
+| Exploitation   | Brute force from 23.22.63.114   |
 | Installation   | File 3791.exe uploaded and executed    | 
 | C2   | Domain prankglassinebracket.jumpingcrab.com	   |
 | Action on Objectives   | Website defaced with poisonivy JPEG   | 
@@ -123,7 +123,29 @@ File found : 3791.exe
 
 ## Investigation Report
 
+**1. Incident Summary**
+  | Parameter | Data |
+  | -- | -- |
+  | Incident Status | Closed (mitigated) |
+  | Attack Category | Website Defacement |
+  | Affected Assets | `http://imreallynotbatman.com` |
+  | Entry Point | Brute force attack in admin login page|
+  
+  **2. Chronological Logs**
+  - `40.80.148.42` reconnaissance with acunetix
+  - Attackers most often interact with `/joomla/administrator/index.php` to obtain credentials
+  - The attacker successfully carried out a brute-force attack using the username “admin” and the password “batman.”
+  - 3791.exe was uploaded to run an automated script on the attacker's C2 server
+  - 3791.exe is downloading `/poisonivy-is-coming-for-you-batman.jpeg` from the C2 domain `prankglassinebracket.jumpingcrab.com`
 
+**3. Indicator Of Compromise (IOC)**
+  * File-based IOC
+    - File name : 3791.exe
+    - Path : `/poisonivy-is-coming-for-you-batman.jpeg`
+
+  * Network-based IOC
+    - IP Attacker :`40.80.148.42`, `23.22.63.114`
+    - Source domain : `http://imreallynotbatman.com`
 
 
 

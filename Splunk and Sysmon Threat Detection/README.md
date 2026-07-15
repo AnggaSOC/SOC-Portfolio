@@ -40,13 +40,13 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
 
 ## Splunk Dashboard 
 
-(add dashboard photo here)
+![sysplunk](Images/dashboard.png)
 
 ## Threat Detection Evidence
 
 * **Malicious Application Alert**
   - The “malicious applications” panel indicates that a file with a dual extension is currently running with .pdf.exe
-    (add photo here)
+    ![sysplunk](Images/suspicious_app.png)
   - Investigation Evidence
     Sysmon recorded Event ID 1, which involved the execution of the `.pdf.exe` file with ParentImage: `powershell.exe`
 
@@ -58,7 +58,7 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
 * **Outbound Connection With Uncommon Port**
   - Detected by Sysmon with Event ID 3: an outbound connection to port 4444 to a foreign IP address
   - There are indications of data exfiltration to the attacker's IP address via port 4444, which is stealing important files from the victim's computer
-    (add photo here)
+![sysplunk](Images/outbound_network.png)
 
 ## Incident Report
 

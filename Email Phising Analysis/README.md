@@ -54,25 +54,6 @@ X-PHP-Originating-Script: 0:send_phish.php
 ```
 Sent using **PHPMailer** from the send_phish.php script. This indicates that this email was created using **phishing tools.**
 
-**Investigation Report**
-**1. Incident Summary**
-  * Incident ID : INC-2006-002 | High (Potential Credential Harvesting / Malware Delivery)
-  * Affected Assets : Employee email inbox
-  * Description : The SOC team analyzed a suspicious email reported by an employee. The analysis revealed that the email was a phishing attempt that used sender name spoofing and urgency tactics to trick the victim into clicking on a malicious link (credential harvesting).
-
-**2. Cyber Kill Chain Mapping**
-  * Reconnaissance : The attacker compiles a list of the company's target email addresses (employees).
-  * Weaponization : The attacker created a fake email from HR and sent it to employees
-  * Delivery : The phishing email successfully bypassed the Spam Gateway filter and landed in the victim's inbox. 
-
-**3. Forensic Evidence & Analysis**
-Email Header Analysis
-  * Displayed from : IT Support Team `<support@linuxenic-corp.com>`
-  * Return-Path: `<bounce@suspicious-domain.xyz>`
-  * Received-SPF: fail
-  * dkim=fail
-  * dmarc=fail
-
 **Case 2**
 
 
@@ -93,23 +74,7 @@ Email Header Analysis
 ```
 
 * **Why & Findings :** A hidden link manipulation technique (hidden redirection) has been discovered. Attackers disguise links to make them appear safe in the body of an email, but the HTML code redirects users to the attacker’s server.
-
-**Investigation Report**
-  * Incident Summary : INC-2026-003 | Medium-High
-  * Affected Assets : Employee email inbox
-  * Description : The SOC team received a report about an incoming email offering benefits to employees in 2025. At first glance, the email appeared normal because there were no suspicious signs. The team was asked to analyze this email more thoroughly
-  * Result : Hidden 1x1 image pixel to track if the link clicked by victim
-    
-```
-<img src="http://tracking.benefits-linuxenic.com/open.gif?id=emp001&amp;campaign=benefits2025" width="1" height="1" alt="" style="display:none;">
-```
-Actual link (dangerous link)
-
-```
-<a href="http://linuxenic-corp.benefits-portal.suspicious-domain.xyz/enroll?ref=email"
-   style="color:#1e3a5f;">https://benefits.linuxenic-corp.com/enroll</a>
-```
-
+  
 **Case 3**
 
 ![Ikon Email](Image/email3.png)
@@ -222,6 +187,50 @@ The automated extraction pulled out malicious URIs and a file attachment hash:
 
 This file has been detected as malware. You can view a lot of information here, such as the malware family name, the original file name, etc.
 
+## Investigation Reports
+
+**Case 1**
+
+**1. Incident Summary**
+  * Incident ID : INC-2006-002 | High (Potential Credential Harvesting / Malware Delivery)
+  * Affected Assets : Employee email inbox
+  * Description : The SOC team analyzed a suspicious email reported by an employee. The analysis revealed that the email was a phishing attempt that used sender name spoofing and urgency tactics to trick the victim into clicking on a malicious link (credential harvesting).
+
+**2. Cyber Kill Chain Mapping**
+  * Reconnaissance : The attacker compiles a list of the company's target email addresses (employees).
+  * Weaponization : The attacker created a fake email from HR and sent it to employees
+  * Delivery : The phishing email successfully bypassed the Spam Gateway filter and landed in the victim's inbox. 
+
+**3. Forensic Evidence & Analysis**
+Email Header Analysis
+  * Displayed from : IT Support Team `<support@linuxenic-corp.com>`
+  * Return-Path: `<bounce@suspicious-domain.xyz>`
+  * Received-SPF: fail
+  * dkim=fail
+  * dmarc=fail
+
+**Case 2**
+
+* Incident Summary : INC-2026-003 | Medium-High
+  * Affected Assets : Employee email inbox
+  * Description : The SOC team received a report about an incoming email offering benefits to employees in 2025. At first glance, the email appeared normal because there were no suspicious signs. The team was asked to analyze this email more thoroughly
+  * Result : Hidden 1x1 image pixel to track if the link clicked by victim
+    
+```
+<img src="http://tracking.benefits-linuxenic.com/open.gif?id=emp001&amp;campaign=benefits2025" width="1" height="1" alt="" style="display:none;">
+```
+Actual link (dangerous link)
+
+```
+<a href="http://linuxenic-corp.benefits-portal.suspicious-domain.xyz/enroll?ref=email"
+   style="color:#1e3a5f;">https://benefits.linuxenic-corp.com/enroll</a>
+```
+**Case 3**
+
+* Incident Summary : INC-2026-004 | Medium-High
+  * Affected Assets : Employee email inbox
+  * Description : The SOC team received a report that an email had been received containing an invoice from a shipping company, which included an attached file
+  * 
 
 ## Incident Response & Mitigation Playbook ##
 

@@ -77,32 +77,30 @@ The SOC team detected an alert on the dashboard regarding a malicious applicatio
   | Entry Point | Phising attachment with download via Google Drive |
 
   **2. Chronological Logs**
-  - 21:11:11 | Delivery
+  - 12:40:10 PM | Delivery
     Process : msedge.exe write file `Finance_Report2026.zip` to directory : `C:\Users\Desktop01\Downloads\`
     Evidence log : Sysmon Event ID 15
-    (add here)
-  - 21:22:56 | Exploitation & Execution
+  - 12:40:20 PM | Exploitation & Execution
     Process : The user extracts the .zip archive and finds the Finance Report 2026.pdf file (the original file is hidden with a double extension .pdf.exe) and opens it. The process of giving birth to a child is a command line terminal process.
     Evidence log : Sysmon Event ID 1
-    (add here)
-  - 22:22:34 | Installation (Reverse shell)
+  - 12:40:21 PM | Installation (Reverse shell)
     Process : Finance_Report.pdf.exe opened an outbound connection to an uncommon port.
     Evidence log : Sysmon Event ID 3
-    (add here)
-  - 23:34:34 | Command & Control
+  - 12:49:59 | Command & Control
     Process : The threat actor executed local reconnaissance commands via a shell interface.
-    Evidence log : Sysmon Event ID 1
-    (add here)
-  - 24:08:28 | Action On Objective (Data Exfiltration)
+    Evidence log : Sysmon Event ID 3
+  - 13:23:46 | Action On Objective (Data Exfiltration)
     Process : Detected a spike in file reading activity and sending large volumes of encrypted data from victim hosts to the attacker's IP.
     Evidence log : Sysmon ID 3
-    (add here)
+
 
 **3. Indicator Of Compromise (IOC)**
   * File-based IOC
     - File name : Finance_Report2026.pdf.exe
-    - Path : C:\Users\Desktop01\Downloads\Finance_Report2026.pdf.exe
-    - 256SHA Hash: add here
+    - Path : `C:\Users\Desktop01\Downloads\Finance_Report2026.pdf.exe`
+    - 256SHA Hash: 083D9BA72619416511D73A071016A56361E411CFA6D3735A05919F61E261E9C4
+    - ParentImage: C:\Windows\explorer.exe
+    - ParentCommandLine: C:\Windows\Explorer.EXE
 
   * Network-based IOC
     - IP Attacker : 192.168.1.11

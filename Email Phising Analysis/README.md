@@ -130,7 +130,7 @@ Using tools to analyze malicious emails greatly helps make the analysis process 
 
 **Case 3**
 
-![Ikon Email](Image/email4.png)
+![Ikon Email](Image/email5.png)
 
 ```
 From

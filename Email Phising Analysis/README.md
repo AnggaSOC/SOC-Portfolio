@@ -130,8 +130,6 @@ Using tools to analyze malicious emails greatly helps make the analysis process 
 
 **Case 3**
 
-![Ikon Email](Image/email5.png)
-
 ```
 From
 m.anderson@linuxenic-corp.com
@@ -225,12 +223,6 @@ Actual link (dangerous link)
 <a href="http://linuxenic-corp.benefits-portal.suspicious-domain.xyz/enroll?ref=email"
    style="color:#1e3a5f;">https://benefits.linuxenic-corp.com/enroll</a>
 ```
-**Case 3**
-
-* Incident Summary : INC-2026-004 | Medium-High
-  * Affected Assets : Employee email inbox
-  * Description : The SOC team received a report that an email had been received containing an invoice from a shipping company, which included an attached file
-  * 
 
 ## Incident Response & Mitigation Playbook ##
 

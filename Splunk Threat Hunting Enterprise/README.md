@@ -118,7 +118,10 @@ File found : 3791.exe
 | Exploitation   | Brute force dari 23.22.63.114   |
 | Installation   | File 3791.exe uploaded and executed    | 
 | C2   | Domain prankglassinebracket.jumpingcrab.com	   |
-| Action on Objectives   | Website defaced dengan poisonivy JPEG   | 
+| Action on Objectives   | Website defaced with poisonivy JPEG   | 
+
+
+## Investigation Report
 
 
 

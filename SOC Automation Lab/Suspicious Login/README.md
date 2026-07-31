@@ -15,4 +15,8 @@ The server administrator and SOC analyst receive an email notification that ther
 
 ## Step
 
-
+1. Wazuh received an alert that there was suspicious login activity outside of business hours
+2. The SOC analyst received an email reporting suspicious activity—specifically, a login to the server outside of business hours
+   ![soc_notif](Images/soc_notif_admin.png)
+4. The server administrator received an email alerting them to suspicious login activity and was asked to immediately confirm whether there had indeed been any login activity at that time.
+5. 

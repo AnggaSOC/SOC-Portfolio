@@ -2,13 +2,13 @@
 
 Monitoring endpoints (company servers) and automatically responding to attacks. This project is divided into separate cases. The following is an overview of the automation lab
 
-![main-workflow](Images/Main-workflow1.jpg)
+![main-workflow](Images/Main.png)
 
 **SOC Automation Lab Environment**
-- Wazuh server (192.168.1.2)
+- Wazuh server (192.168.1.12)
 - Enterprise server (192.168.1.11)
 - Administrator server (192.168.1.8)
-- Attacker (192.168.1.12)
+- Attacker (192.168.1.13)
 - Shuffle automation tools
 - Email
 - Jira management system

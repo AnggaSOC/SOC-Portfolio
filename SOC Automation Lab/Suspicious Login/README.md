@@ -31,4 +31,7 @@ The server administrator and SOC analyst receive an email notification that ther
 
    A suspicious IP address, `192.168.1.13`, was detected attempting to log in to the company's server outside of business hours at 15:06 UTC / 22:06 GMT+7.
 3. The server administrator has confirmed that they did not log in to the server at that time.
-4.  
+4. The SOC analyst received an email stating that the activity did not originate from the server administrator (was unauthorized). An incident ticket was then automatically created
+   ![alert](Images/soc_notif_invalid.png)
+
+   

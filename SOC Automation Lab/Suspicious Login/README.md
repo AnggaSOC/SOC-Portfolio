@@ -20,7 +20,15 @@ The server administrator and SOC analyst receive an email notification that ther
    ![soc_notif](Images/soc_notif_admin.png)
 
    A suspicious IP address, `192.168.1.8`, was detected attempting to log in to the company's server outside of business hours at 13:50 UTC / 21:00 GMT+7. 
-4. The server administrator received an email alerting them to suspicious login activity and was asked to immediately confirm whether there had indeed been any login activity at that time. The SOC analyst received an email stating that the activity was legitimate and had been confirmed by the server administrator 
+3. The server administrator received an email alerting them to suspicious login activity and was asked to immediately confirm whether there had indeed been any login activity at that time. The SOC analyst received an email stating that the activity was legitimate and had been confirmed by the server administrator 
    ![soc_valid.png](Images/soc_valid.png) 
 
-6. 
+## Suspicious Activity in Outside of Businness Hours
+
+1. Wazuh received an alert that there was suspicious login activity outside of business hours
+2. The SOC analyst received an email reporting suspicious activity—specifically, a login to the server outside of business hours
+   ![soc_notif](Images/soc_notif_noadmin.png)
+
+   A suspicious IP address, `192.168.1.13`, was detected attempting to log in to the company's server outside of business hours at 15:06 UTC / 22:06 GMT+7.
+3. The server administrator has confirmed that they did not log in to the server at that time.
+4.  

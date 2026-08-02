@@ -1,4 +1,5 @@
 ## DoS/DDoS ATTACK AUTOMATION RESPONSE
+<div align="center"><img src="Images/ddos_icon.png" alt="Deskripsi"></div>
 
 ## Project Overview
 

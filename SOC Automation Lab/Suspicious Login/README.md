@@ -34,4 +34,23 @@ The server administrator and SOC analyst receive an email notification that ther
 4. The SOC analyst received an email stating that the activity did not originate from the server administrator (was unauthorized). An incident ticket was then automatically created
    ![alert](Images/soc_notif_invalid.png)
 
+## INCIDENT REPORT
+
+**1. Incident Summary**
+
+| Parameter | Data |
+| --- | --- |
+| Incident Status | Closed |
+| Attack Category | Detect logins to company assets outside of business hours |
+| Affected Assets | Server001 `192.168.1.11` |
+| Entry Points | Port 22 - SSH client |
+
+**2. Chronological**
+- An unknown IP address `192.168.1.13` especially logged into the server via an SSH client outside of business hours
+- The server administrator confirmed that there were no login attempts to the server from other devices
+- The SOC analyst received an email stating that this was a valid instance of suspicious activity
+- Incident tickets are created automatically
+
+
+
    
